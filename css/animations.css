@@ -1,0 +1,59 @@
+/* Global motion + micro-interactions */
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page {
+  animation: pageFadeIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Button press feedback */
+.btn {
+  transform-origin: center;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Subtle "ripple" ring (no JS, premium + minimal) */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn {
+  position: relative;
+}
+
+.btn:hover::after {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .btn:hover::after {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Card hover lift */
+.card,
+.product-card {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}

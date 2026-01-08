@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ryana Calendars — premium calendars, diaries, and journals." />
+  <title>Ryana Calendars | Premium Calendars, Diaries & Journals</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <script defer src="js/data.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+
+<body>
+  <!-- Accessibility: allows keyboard users to skip repetitive navigation -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <!-- Main content -->
+  <main id="main" class="page" data-page="home">
+    <!-- Hero section -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Premium stationery for thoughtful planning</p>
+          <h1>Calendars, diaries and journals designed to elevate your day.</h1>
+          <p class="lead">
+            Ryana Calendars brings a modern, minimal aesthetic to everyday planning. Explore our curated range of
+            calendars, diaries and journals—crafted for students, professionals, and anyone who loves to stay organized.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="pages/products.html">Explore Products</a>
+            <a class="btn btn-ghost" href="docs/ryana-price-list.doc" download>Download Price List</a>
+          </div>
+
+          <div class="hero-highlights" aria-label="Highlights">
+            <div class="highlight">
+              <div class="highlight__value">Minimal</div>
+              <div class="highlight__label">Modern design</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight__value">Durable</div>
+              <div class="highlight__label">Premium materials</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight__value">Practical</div>
+              <div class="highlight__label">Smart layouts</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media" aria-hidden="true">
+          <img class="hero-image" src="Assets/calendar home.jfif" alt="" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Business summary section -->
+    <section class="section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="about-title">A premium experience—online and in store</h2>
+          <p class="muted">
+            Ryana Calendars previously relied on pamphlets and TV promotions. Today, we’re building a modern web
+            experience where customers can browse products, download detailed features, view location, and contact us
+            with ease.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Curated categories</h3>
+            <p class="muted">
+              Explore journals, calendars, and diaries with a simple category filter and a clean product presentation.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Downloadable details</h3>
+            <p class="muted">
+              Each product comes with a downloadable Word document containing key features and specifications.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Simple contact</h3>
+            <p class="muted">
+              Need help choosing a layout or size? Send us an email directly from the contact section.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured products: dynamic product grid (rendered by JS) -->
+    <section class="section section--tight" id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="products-title">Products</h2>
+          <p class="muted">Filter by category or open the full catalog.</p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Product categories">
+          <button class="filter-btn is-active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" type="button" data-filter="journals" role="tab" aria-selected="false">Journals</button>
+          <button class="filter-btn" type="button" data-filter="calendars" role="tab" aria-selected="false">Calendars</button>
+          <button class="filter-btn" type="button" data-filter="diaries" role="tab" aria-selected="false">Diaries</button>
+        </div>
+
+        <div class="products-grid" id="products-grid" aria-live="polite"></div>
+
+        <div class="section-actions">
+          <a class="btn btn-primary" href="pages/products.html">View All Products</a>
+          <a class="btn btn-ghost" href="pages/categories.html">Browse Categories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price list section: downloadable document link -->
+    <section class="section" id="price-list" aria-labelledby="price-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="price-title">Price List</h2>
+          <p class="muted">Download the latest price list to compare sizes, paper options, and binding finishes.</p>
+        </div>
+
+        <div class="download-card" role="group" aria-label="Price list download">
+          <div>
+            <h3 class="download-card__title">Ryana Calendars — Price List</h3>
+            <p class="muted">Updated regularly. For bulk orders, email us for a custom quote.</p>
+          </div>
+          <a class="btn btn-primary" href="docs/ryana-price-list.doc" download>Download Price List</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location section: address + optional map placeholder -->
+    <section class="section" id="location" aria-labelledby="location-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="location-title">Location</h2>
+          <p class="muted">Visit our shop to view samples, paper finishes, and new seasonal designs.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Shop Address</h3>
+            <p class="muted">
+              Ryana Calendars
+              <br />Main Boulevard, Block A
+              <br />Gulberg, Lahore, Pakistan
+            </p>
+
+            <a class="btn btn-ghost" href="pages/contact.html">Need help? Contact us</a>
+          </div>
+
+          <div class="map-placeholder" aria-label="Map placeholder">
+            <div class="map-placeholder__inner">
+              <div class="map-placeholder__title">Map Placeholder</div>
+              <div class="map-placeholder__text">You can replace this section with an embedded map iframe if needed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section: company address + mailto link -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="contact-title">Contact Us</h2>
+          <p class="muted">For orders, availability, and bulk pricing, email us and we’ll respond promptly.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Head Office</h3>
+            <p class="muted">
+              Ryana Calendars
+              <br />Main Boulevard, Block A
+              <br />Gulberg, Lahore, Pakistan
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Email</h3>
+            <p class="muted">Click to open your mail app:</p>
+            <a class="contact-link" href="mailto:info@ryanacalendars.com?subject=Inquiry%20-%20Ryana%20Calendars">info@ryanacalendars.com</a>
+          </div>
+
+          <div class="contact-card">
+            <h3>Business Hours</h3>
+            <p class="muted">
+              Mon–Sat: 10:00 AM – 8:00 PM
+              <br />Sunday: Closed
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>
