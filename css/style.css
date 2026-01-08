@@ -132,7 +132,7 @@ button:focus-visible {
  }
 
 .nav-link:hover {
-  color: #000;
+  color: var(--fg);
 }
 
 .nav-link.is-active::after {
@@ -615,7 +615,7 @@ h1 {
 }
 
 .contact-link:hover {
-  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border-bottom-color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
 .site-footer {

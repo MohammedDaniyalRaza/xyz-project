@@ -195,3 +195,84 @@
   font-weight: 800;
   margin-left: 8px;
 }
+
+ .blog-card__date {
+   font-size: 13px;
+   color: var(--muted);
+ }
+
+ .blog-card__title {
+   margin: 10px 0 8px;
+   letter-spacing: -0.02em;
+ }
+
+ .blog-card__excerpt {
+   margin: 0 0 14px;
+   color: var(--muted);
+ }
+
+ .checkout-line {
+   display: flex;
+   justify-content: space-between;
+   gap: 14px;
+   align-items: flex-start;
+ }
+
+ .checkout-line__name {
+   font-weight: 750;
+ }
+
+ .checkout-line__qty {
+   margin-top: 4px;
+   font-size: 13px;
+   color: var(--muted);
+ }
+
+ .checkout-line__price {
+  font-weight: 750;
+}
+
+ /* Utilities (used to avoid inline styles across pages) */
+
+ .stack {
+   display: grid;
+   gap: 12px;
+ }
+
+ .stack--18 {
+   gap: 18px;
+ }
+
+ .center {
+   display: grid;
+   place-items: center;
+ }
+
+ .max-w-520 {
+   width: min(520px, 100%);
+ }
+
+ .m-0 {
+   margin: 0;
+ }
+
+ .mb-12 {
+   margin-bottom: 12px;
+ }
+
+ .mt-16 {
+   margin-top: 16px;
+ }
+
+ .mt-18 {
+   margin-top: 18px;
+ }
+
+ .title-sm {
+   margin: 0 0 12px;
+   letter-spacing: -0.02em;
+ }
+
+ .text-danger {
+   color: #b00020;
+ }

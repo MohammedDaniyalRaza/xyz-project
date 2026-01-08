@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse all Ryana Calendars products." />
+  <title>Products | Ryana Calendars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/cart.js"></script>
+  <script defer src="../js/auth.js"></script>
+  <script defer src="../js/theme.js"></script>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <main id="main" class="page" data-page="products">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Products</h1>
+        <p class="page-subtitle">Explore our full catalog. Use filters to quickly find calendars, diaries, or journals.</p>
+        <nav class="breadcrumbs" data-breadcrumbs aria-label="Breadcrumb"></nav>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-label="Product catalog">
+      <div class="container">
+        <div class="filter-bar" role="tablist" aria-label="Product categories">
+          <button class="filter-btn" type="button" data-filter="all" role="tab" aria-selected="false">All</button>
+          <button class="filter-btn" type="button" data-filter="journals" role="tab" aria-selected="false">Journals</button>
+          <button class="filter-btn" type="button" data-filter="calendars" role="tab" aria-selected="false">Calendars</button>
+          <button class="filter-btn" type="button" data-filter="diaries" role="tab" aria-selected="false">Diaries</button>
+        </div>
+
+        <div class="products-grid" id="products-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>

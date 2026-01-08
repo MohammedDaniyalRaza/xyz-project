@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Checkout - Ryana Calendars." />
+  <title>Checkout | Ryana Calendars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/cart.js"></script>
+  <script defer src="../js/auth.js"></script>
+  <script defer src="../js/theme.js"></script>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <main id="main" class="page" data-page="checkout">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Checkout</h1>
+        <p class="page-subtitle">A simple academic checkout flow (no real payment integration).</p>
+        <nav class="breadcrumbs" data-breadcrumbs aria-label="Breadcrumb"></nav>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container stack stack--18">
+        <div class="card card--padded">
+          <h3 class="title-sm">Customer Details</h3>
+          <form class="form" data-checkout-form>
+            <div class="field">
+              <label class="label" for="name">Full Name</label>
+              <input class="input" id="name" name="name" type="text" required />
+            </div>
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" required />
+            </div>
+            <div class="field">
+              <label class="label" for="address">Delivery Address</label>
+              <textarea class="textarea" id="address" name="address" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Place Order (Demo)</button>
+          </form>
+        </div>
+
+        <div class="card card--padded">
+          <h3 class="title-sm">Order Summary</h3>
+          <div class="stack" data-checkout-summary></div>
+          <div class="download-card mt-16">
+            <div>
+              <h3 class="download-card__title">Total</h3>
+              <p class="muted m-0">Amount: <span data-checkout-total>PKR 0</span></p>
+            </div>
+            <a class="btn btn-ghost" href="products.html">Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>

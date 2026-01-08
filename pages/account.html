@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Account - Ryana Calendars." />
+  <title>Account | Ryana Calendars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/cart.js"></script>
+  <script defer src="../js/auth.js"></script>
+  <script defer src="../js/theme.js"></script>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <main id="main" class="page" data-page="account">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Account</h1>
+        <p class="page-subtitle">This page is protected. You’ll be redirected to login if you’re not authenticated.</p>
+        <nav class="breadcrumbs" data-breadcrumbs aria-label="Breadcrumb"></nav>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Your profile</h3>
+            <p class="muted">Demo account state is stored in localStorage.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Saved items</h3>
+            <p class="muted">Your cart and wishlist persist across the site.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Account actions</h3>
+            <p class="muted">Use logout to clear demo login state.</p>
+            <div class="section-actions">
+              <button class="btn btn-primary" type="button" data-logout>Logout</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>

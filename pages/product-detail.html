@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Product details for Ryana Calendars." />
+  <title>Product Detail | Ryana Calendars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/cart.js"></script>
+  <script defer src="../js/auth.js"></script>
+  <script defer src="../js/theme.js"></script>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <main id="main" class="page" data-page="product-detail">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title" data-product-title>Product</h1>
+        <p class="page-subtitle">A quick overview plus a downloadable Word document with detailed features.</p>
+        <nav class="breadcrumbs" data-breadcrumbs aria-label="Breadcrumb"></nav>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="details">
+          <div class="details-inner">
+            <div class="details-media">
+              <img class="details-image" data-product-image src="" alt="" loading="lazy" />
+            </div>
+
+            <div class="details-content">
+              <p class="details-category" data-product-category></p>
+              <div class="kpi">
+                <div class="kpi__value" data-product-price></div>
+                <div class="kpi__label">Estimated retail price</div>
+              </div>
+              <p class="details-description" data-product-description></p>
+
+              <div class="details-actions">
+                <button class="btn btn-primary" type="button" data-add-to-cart>Add to Cart</button>
+                <button class="btn btn-ghost" type="button" data-toggle-wishlist>Toggle Wishlist</button>
+                <a class="btn btn-ghost" data-product-doc href="#" download>Download Features (Word)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>

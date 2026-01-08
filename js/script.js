@@ -121,7 +121,7 @@
         resolvePath("pages/offers.html") +
         '">Offers</a>' +
         '<a class="nav-link" data-nav="new" href="' +
-        resolvePath("pages/new-arrivals.html") +
+        resolvePath("pages/new.html") +
         '">New</a>' +
         '<a class="nav-link" data-nav="blog" href="' +
         resolvePath("pages/blog.html") +
@@ -195,6 +195,7 @@
       journals: "categories",
       offers: "offers",
       "new-arrivals": "new",
+      new: "new",
       blog: "blog",
       "blog-detail": "blog",
       contact: "contact",
@@ -209,6 +210,18 @@
     $all(".nav-link[data-nav]").forEach(function (a) {
       a.classList.toggle("is-active", active && a.getAttribute("data-nav") === active);
     });
+  }
+
+  function ensureBreadcrumbFallback() {
+    var host = $("[data-breadcrumbs]");
+    if (!host) return;
+    if (host.children && host.children.length) return;
+
+    var titleEl = $(".page-title");
+    var title = titleEl ? titleEl.textContent.trim() : "";
+    if (!title) title = "Page";
+
+    renderBreadcrumbs([{ label: "Home", href: "index.html" }, { label: title }]);
   }
 
   function setupMobileNav() {
@@ -618,6 +631,9 @@
   }
 
   function initCategoryPage(category) {
+    // Category pages may not have filter buttons; always render the grid.
+    renderProductsIntoGrid(category, "#products-grid");
+    // If a filter bar exists on the page, keep it in sync.
     setupFilterBar(category, "#products-grid");
     renderBreadcrumbs([
       { label: "Home", href: "index.html" },
@@ -678,13 +694,13 @@
       var card = document.createElement("article");
       card.className = "card card--padded";
       card.innerHTML =
-        '<div class="muted" style="font-size:13px;">' +
+        '<div class="blog-card__date">' +
         post.date +
         "</div>" +
-        '<h3 style="margin:10px 0 8px; letter-spacing:-0.02em;">' +
+        '<h3 class="blog-card__title">' +
         post.title +
         "</h3>" +
-        '<p class="muted" style="margin:0 0 14px;">' +
+        '<p class="blog-card__excerpt">' +
         post.excerpt +
         "</p>" +
         '<a class="btn btn-primary" href="' +
@@ -756,13 +772,16 @@
       var row = document.createElement("div");
       row.className = "card card--padded";
       row.innerHTML =
-        '<div style="display:flex;justify-content:space-between;gap:14px;align-items:flex-start;">' +
-        '<div><div style="font-weight:750;">' +
+        '<div class="checkout-line">' +
+        '<div>' +
+        '<div class="checkout-line__name">' +
         p.name +
-        "</div><div class=\"muted\" style=\"font-size:13px; margin-top:4px;\">Qty: " +
+        "</div>" +
+        '<div class="checkout-line__qty">Qty: ' +
         line.qty +
-        "</div></div>" +
-        '<div style="font-weight:750;">' +
+        "</div>" +
+        "</div>" +
+        '<div class="checkout-line__price">' +
         formatPricePKR(lineTotal) +
         "</div>" +
         "</div>";
@@ -804,6 +823,7 @@
     if (page === "journals") initCategoryPage("journals");
     if (page === "offers") mountShowcase("offers");
     if (page === "new-arrivals") mountShowcase("new-arrivals");
+    if (page === "new") mountShowcase("new-arrivals");
     if (page === "blog") mountBlogList();
     if (page === "blog-detail") mountBlogDetail();
     if (page === "product-detail") mountProductDetail();
@@ -812,6 +832,9 @@
     if (page === "checkout") mountCheckout();
     if (page === "login") mountLogin();
     if (page === "account") mountAccount();
+
+    // Pages like about/faq/terms/privacy/contact/new can rely on this.
+    ensureBreadcrumbFallback();
 
     // Theme icon swaps based on current theme.
     var themeBtn = $("[data-theme-toggle]");

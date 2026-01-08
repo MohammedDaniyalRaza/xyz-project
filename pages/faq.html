@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="FAQ - Ryana Calendars." />
+  <title>FAQ | Ryana Calendars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <script defer src="../js/data.js"></script>
+  <script defer src="../js/cart.js"></script>
+  <script defer src="../js/auth.js"></script>
+  <script defer src="../js/theme.js"></script>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header data-site-header></header>
+
+  <main id="main" class="page" data-page="faq">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">FAQ</h1>
+        <p class="page-subtitle">Quick answers about products, downloads, and orders.</p>
+        <nav class="breadcrumbs" data-breadcrumbs aria-label="Breadcrumb"></nav>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container stack">
+        <article class="card card--padded">
+          <h3 class="title-sm">Do the product downloads work offline?</h3>
+          <p class="muted m-0">Yes. The Word documents are stored in the <code>docs/</code> folder and downloaded using normal file links.</p>
+        </article>
+
+        <article class="card card--padded">
+          <h3 class="title-sm">Is this a real ecommerce checkout?</h3>
+          <p class="muted m-0">This is a demo flow for academic use. Cart and checkout state are stored in <code>localStorage</code> only.</p>
+        </article>
+
+        <article class="card card--padded">
+          <h3 class="title-sm">Can I add more products?</h3>
+          <p class="muted m-0">Yes. Edit <code>js/data.js</code> and add new product objects. All pages update automatically.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+</body>
+</html>
