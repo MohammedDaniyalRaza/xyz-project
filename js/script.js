@@ -159,25 +159,68 @@
     if (footerHost) {
       footerHost.innerHTML =
         '<footer class="site-footer">' +
-        '<div class="container footer-inner">' +
-        '<div class="footer-left">' +
+        '<div class="container footer-grid">' +
+        '<div class="footer-brand-block">' +
         '<div class="footer-brand">Ryana Calendars</div>' +
         '<div class="footer-muted">Premium calendars, diaries and journals.</div>' +
+        '<div class="footer-muted">Email: <a class="footer-link" href="mailto:info@ryanacalendars.com">info@ryanacalendars.com</a></div>' +
         "</div>" +
-        '<div class="footer-links">' +
-        '<a class="nav-link" href="' +
+        '<div class="footer-col">' +
+        '<div class="footer-title">Shop</div>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/products.html") +
+        '">Products</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/categories.html") +
+        '">Categories</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/offers.html") +
+        '">Offers</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/new.html") +
+        '">New</a>' +
+        "</div>" +
+        '<div class="footer-col">' +
+        '<div class="footer-title">Account</div>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/account.html") +
+        '">Account</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/cart.html") +
+        '">Cart</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/wishlist.html") +
+        '">Wishlist</a>' +
+        "</div>" +
+        '<div class="footer-col">' +
+        '<div class="footer-title">Company</div>' +
+        '<a class="footer-link" href="' +
         resolvePath("pages/about.html") +
         '">About</a>' +
-        '<a class="nav-link" href="' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/blog.html") +
+        '">Blog</a>' +
+        '<a class="footer-link" href="' +
+        resolvePath("pages/contact.html") +
+        '">Contact</a>' +
+        "</div>" +
+        '<div class="footer-col">' +
+        '<div class="footer-title">Legal</div>' +
+        '<a class="footer-link" href="' +
         resolvePath("pages/faq.html") +
         '">FAQ</a>' +
-        '<a class="nav-link" href="' +
+        '<a class="footer-link" href="' +
         resolvePath("pages/terms.html") +
         '">Terms</a>' +
-        '<a class="nav-link" href="' +
+        '<a class="footer-link" href="' +
         resolvePath("pages/privacy.html") +
         '">Privacy</a>' +
         "</div>" +
+        "</div>" +
+        '<div class="container footer-bottom">' +
+        '<div class="footer-muted">© ' +
+        new Date().getFullYear() +
+        ' Ryana Calendars. Academic demo site.</div>' +
         '<a class="back-to-top" href="#top">Back to top</a>' +
         "</div>" +
         "</footer>";
@@ -255,7 +298,8 @@
     if (wish) wish.textContent = String(window.RyanaCart.wishlistCount());
   }
 
-  function buildProductCard(product) {
+  function buildProductCard(product, options) {
+    var opts = options || {};
     var card = document.createElement("article");
     card.className = "product-card";
     card.setAttribute("data-category", product.category);
@@ -315,11 +359,12 @@
     var wishBtn = document.createElement("button");
     wishBtn.type = "button";
     wishBtn.className = "btn btn-ghost";
-    wishBtn.textContent = "Wishlist";
+    wishBtn.textContent = opts.mode === "wishlist" ? "Remove" : "Wishlist";
     wishBtn.addEventListener("click", function () {
       if (!window.RyanaCart) return;
       window.RyanaCart.toggleWishlist(product.id);
       updateHeaderCounts();
+      if (typeof opts.onWishlistToggle === "function") opts.onWishlistToggle();
     });
 
     actions.appendChild(detailsLink);
@@ -450,6 +495,30 @@
         updateHeaderCounts();
       });
     }
+
+    // Similar products
+    var similarHost = $("[data-similar-grid]");
+    if (similarHost && window.RyanaData) {
+      var list = window.RyanaData.products
+        .filter(function (p) {
+          return p.id !== product.id;
+        })
+        .filter(function (p) {
+          return p.category === product.category;
+        });
+
+      if (list.length < 4) {
+        var extra = window.RyanaData.products.filter(function (p) {
+          return p.id !== product.id && p.category !== product.category;
+        });
+        list = list.concat(extra);
+      }
+
+      similarHost.innerHTML = "";
+      list.slice(0, 6).forEach(function (p) {
+        similarHost.appendChild(buildProductCard(p));
+      });
+    }
   }
 
   function mountCart() {
@@ -553,7 +622,14 @@
       ids.forEach(function (id) {
         var p = window.RyanaData.findProduct(id);
         if (!p) return;
-        host.appendChild(buildProductCard(p));
+        host.appendChild(
+          buildProductCard(p, {
+            mode: "wishlist",
+            onWishlistToggle: function () {
+              render();
+            }
+          })
+        );
       });
     }
 
@@ -567,11 +643,9 @@
 
   function mountLogin() {
     if (!window.RyanaAuth) return;
-    var creds = window.RyanaAuth.getCreds();
-
     var hint = $("[data-login-hint]");
     if (hint) {
-      hint.textContent = "Demo credentials: " + creds.email + " / " + creds.password;
+      hint.textContent = "Demo login: use any email and any password.";
     }
 
     var form = $("[data-login-form]");
@@ -585,7 +659,7 @@
       var ok = window.RyanaAuth.login(email, password);
       var error = $("[data-login-error]");
       if (!ok) {
-        if (error) error.textContent = "Invalid login. Use the demo credentials shown above.";
+        if (error) error.textContent = "Please enter an email and password.";
         return;
       }
 

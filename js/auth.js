@@ -3,6 +3,7 @@
 
   var CREDS_KEY = "ryana_creds";
   var AUTH_KEY = "ryana_auth";
+  var USER_KEY = "ryana_user";
 
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,14 +35,35 @@
   }
 
   function login(email, password) {
-    var creds = getCreds();
-    var ok = email === creds.email && password === creds.password;
-    if (ok) localStorage.setItem(AUTH_KEY, "true");
+    var e = String(email || "").trim();
+    var p = String(password || "").trim();
+    var ok = e.length > 0 && p.length > 0;
+    if (ok) {
+      localStorage.setItem(AUTH_KEY, "true");
+      try {
+        localStorage.setItem(USER_KEY, JSON.stringify({ email: e }));
+      } catch (err) {
+        // ignore
+      }
+    }
     return ok;
   }
 
   function logout() {
     localStorage.setItem(AUTH_KEY, "false");
+    try {
+      localStorage.removeItem(USER_KEY);
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  function getUser() {
+    try {
+      return JSON.parse(localStorage.getItem(USER_KEY) || "null");
+    } catch (e) {
+      return null;
+    }
   }
 
   function requireAuth(redirectTo) {
@@ -57,6 +79,7 @@
     isLoggedIn: isLoggedIn,
     login: login,
     logout: logout,
+    getUser: getUser,
     requireAuth: requireAuth
   };
 })();
