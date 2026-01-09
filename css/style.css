@@ -22,12 +22,6 @@
   color: inherit;
  }
 
- @media (max-width: 340px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
- }
-
 * {
   box-sizing: border-box;
 }
@@ -534,6 +528,7 @@ h1 {
 
  .product-card__actions .btn-primary {
   grid-column: 1 / -1;
+  border-color: transparent;
  }
 
  .product-card__actions .btn-ghost {
@@ -603,6 +598,19 @@ h1 {
   margin-top: 8px;
 }
 
+ .details-actions .btn-ghost {
+  background: var(--soft);
+  border-color: transparent;
+ }
+
+ .details-actions .btn-primary {
+  border-color: transparent;
+ }
+
+ .details-actions .btn-ghost:hover {
+  background: color-mix(in srgb, var(--soft) 65%, transparent);
+ }
+
 .download-card {
   display: flex;
   align-items: center;
@@ -644,7 +652,7 @@ h1 {
   overflow: hidden;
   background:
     linear-gradient(120deg, rgba(0, 0, 0, 0.06), transparent 40%),
-    linear-gradient(180deg, #fff, #f3f3f3);
+    linear-gradient(180deg, var(--card-bg), color-mix(in srgb, var(--card-bg) 70%, var(--soft)));
   box-shadow: var(--shadow-soft);
   min-height: 240px;
   display: grid;
@@ -866,6 +874,12 @@ h1 {
   }
 }
 
+@media (max-width: 520px) {
+  .hero-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
   .header-inner {
     gap: 10px;
@@ -950,5 +964,11 @@ h1 {
 @media (min-width: 721px) and (max-width: 980px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 }

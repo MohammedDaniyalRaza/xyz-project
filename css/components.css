@@ -5,14 +5,14 @@
 }
 
 [data-theme="dark"] {
-  --bg: #0b0b0b;
-  --fg: #f4f4f4;
-  --muted: #b7b7b7;
-  --line: #262626;
-  --soft: #141414;
-  --card-bg: #111111;
-  --input-bg: #101010;
-  --focus: rgba(244, 244, 244, 0.16);
+  --bg: #070707;
+  --fg: rgba(244, 244, 244, 0.94);
+  --muted: rgba(244, 244, 244, 0.72);
+  --line: rgba(244, 244, 244, 0.14);
+  --soft: rgba(244, 244, 244, 0.06);
+  --card-bg: rgba(16, 16, 16, 0.95);
+  --input-bg: rgba(10, 10, 10, 0.65);
+  --focus: rgba(244, 244, 244, 0.14);
 }
 
 /* Components: cards, buttons, forms, badges */
