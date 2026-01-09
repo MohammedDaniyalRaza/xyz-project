@@ -249,8 +249,10 @@
  }
 
  .max-w-520 {
-   width: min(520px, 100%);
- }
+  width: min(520px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
 
  .m-0 {
    margin: 0;
