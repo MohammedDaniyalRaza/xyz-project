@@ -197,7 +197,13 @@ button:focus-visible {
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   cursor: pointer;
+  color: var(--fg);
 }
+
+ [data-theme="dark"] .nav-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(244, 244, 244, 0.16);
+ }
 
 .nav-toggle__label {
   font-size: 14px;
@@ -434,11 +440,21 @@ h1 {
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--bg);
+  color: var(--fg);
   font-weight: 650;
   font-size: 14px;
   cursor: pointer;
   transition: background 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease);
 }
+
+ .filter-btn:hover {
+  background: var(--soft);
+ }
+
+ [data-theme="dark"] .filter-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(244, 244, 244, 0.16);
+ }
 
 .filter-btn.is-active {
   background: var(--fg);
@@ -526,6 +542,16 @@ h1 {
   gap: 10px;
 }
 
+ .product-card__actions .btn {
+  width: 100%;
+  min-width: 0;
+  padding: 0 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+
  .product-card__actions .btn-primary {
   grid-column: 1 / -1;
   border-color: transparent;
@@ -597,6 +623,14 @@ h1 {
   gap: 10px;
   margin-top: 8px;
 }
+
+ .details-actions .btn {
+  flex: 1 1 180px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
 
  .details-actions .btn-ghost {
   background: var(--soft);

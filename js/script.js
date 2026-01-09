@@ -910,6 +910,18 @@
     // Pages like about/faq/terms/privacy/contact/new can rely on this.
     ensureBreadcrumbFallback();
 
+    var contactForm = document.querySelector("[data-contact-form]");
+    if (contactForm) {
+      var status = document.querySelector("[data-contact-form-status]");
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (status) {
+          status.textContent = "Thanks! Your message has been saved (demo). We'll get back to you soon.";
+        }
+        contactForm.reset();
+      });
+    }
+
     // Theme icon swaps based on current theme.
     var themeBtn = $("[data-theme-toggle]");
     if (themeBtn) {
