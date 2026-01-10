@@ -98,11 +98,11 @@
         '<div class="container header-inner">' +
         '<a class="brand" href="' +
         resolvePath("index.html") +
-        '" aria-label="Ryana Calendars">' +
+        '" aria-label="RasaGrid Calendars">' +
         '<img class="brand-mark" src="' +
         resolvePath("Assets/weblogo.png") +
-        '" alt="Ryana Calendars logo" width="36" height="36" />' +
-        '<span class="brand-name">Ryana Calendars</span>' +
+        '" alt="RasaGrid Calendars logo" width="36" height="36" />' +
+        '<span class="brand-name">RasaGrid Calendars</span>' +
         "</a>" +
         '<button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">' +
         '<span class="nav-toggle__label">Menu</span>' +
@@ -161,9 +161,9 @@
         '<footer class="site-footer">' +
         '<div class="container footer-grid">' +
         '<div class="footer-brand-block">' +
-        '<div class="footer-brand">Ryana Calendars</div>' +
+        '<div class="footer-brand">RasaGrid Calendars</div>' +
         '<div class="footer-muted">Premium calendars, diaries and journals.</div>' +
-        '<div class="footer-muted">Email: <a class="footer-link" href="mailto:info@ryanacalendars.com">info@ryanacalendars.com</a></div>' +
+        '<div class="footer-muted">Email: <a class="footer-link" href="mailto:info@RasaGridcalendars.com">info@RasaGridcalendars.com</a></div>' +
         "</div>" +
         '<div class="footer-col">' +
         '<div class="footer-title">Shop</div>' +
@@ -220,7 +220,7 @@
         '<div class="container footer-bottom">' +
         '<div class="footer-muted">© ' +
         new Date().getFullYear() +
-        ' Ryana Calendars. Academic demo site.</div>' +
+        ' RasaGrid Calendars. Academic demo site.</div>' +
         '<a class="back-to-top" href="#top">Back to top</a>' +
         "</div>" +
         "</footer>";
@@ -291,11 +291,11 @@
   }
 
   function updateHeaderCounts() {
-    if (!window.RyanaCart) return;
+    if (!window.RasaGridCart) return;
     var cart = $("[data-cart-count]");
     var wish = $("[data-wishlist-count]");
-    if (cart) cart.textContent = String(window.RyanaCart.cartCount());
-    if (wish) wish.textContent = String(window.RyanaCart.wishlistCount());
+    if (cart) cart.textContent = String(window.RasaGridCart.cartCount());
+    if (wish) wish.textContent = String(window.RasaGridCart.wishlistCount());
   }
 
   function buildProductCard(product, options) {
@@ -352,7 +352,7 @@
     addBtn.className = "btn btn-ghost";
     addBtn.textContent = "Add to Cart";
     addBtn.addEventListener("click", function () {
-      if (window.RyanaCart) window.RyanaCart.addToCart(product.id, 1);
+      if (window.RasaGridCart) window.RasaGridCart.addToCart(product.id, 1);
       updateHeaderCounts();
     });
 
@@ -361,8 +361,8 @@
     wishBtn.className = "btn btn-ghost";
     wishBtn.textContent = opts.mode === "wishlist" ? "Remove" : "Wishlist";
     wishBtn.addEventListener("click", function () {
-      if (!window.RyanaCart) return;
-      window.RyanaCart.toggleWishlist(product.id);
+      if (!window.RasaGridCart) return;
+      window.RasaGridCart.toggleWishlist(product.id);
       updateHeaderCounts();
       if (typeof opts.onWishlistToggle === "function") opts.onWishlistToggle();
     });
@@ -388,10 +388,10 @@
 
   function renderProductsIntoGrid(filter, gridSelector) {
     var grid = $(gridSelector || "#products-grid");
-    if (!grid || !window.RyanaData) return;
+    if (!grid || !window.RasaGridData) return;
 
     grid.innerHTML = "";
-    var list = window.RyanaData.products;
+    var list = window.RasaGridData.products;
 
     var visible = list.filter(function (p) {
       return filter === "all" ? true : p.category === filter;
@@ -446,9 +446,9 @@
   }
 
   function mountProductDetail() {
-    if (!window.RyanaData) return;
+    if (!window.RasaGridData) return;
     var id = getQueryParam("id");
-    var product = window.RyanaData.findProduct(id);
+    var product = window.RasaGridData.findProduct(id);
 
     var title = $("[data-product-title]");
     var img = $("[data-product-image]");
@@ -462,7 +462,7 @@
       return;
     }
 
-    document.title = product.name + " | Ryana Calendars";
+    document.title = product.name + " | RasaGrid Calendars";
 
     if (title) title.textContent = product.name;
     if (img) {
@@ -483,7 +483,7 @@
     var addBtn = $("[data-add-to-cart]");
     if (addBtn) {
       addBtn.addEventListener("click", function () {
-        if (window.RyanaCart) window.RyanaCart.addToCart(product.id, 1);
+        if (window.RasaGridCart) window.RasaGridCart.addToCart(product.id, 1);
         updateHeaderCounts();
       });
     }
@@ -491,15 +491,15 @@
     var wishBtn = $("[data-toggle-wishlist]");
     if (wishBtn) {
       wishBtn.addEventListener("click", function () {
-        if (window.RyanaCart) window.RyanaCart.toggleWishlist(product.id);
+        if (window.RasaGridCart) window.RasaGridCart.toggleWishlist(product.id);
         updateHeaderCounts();
       });
     }
 
     // Similar products
     var similarHost = $("[data-similar-grid]");
-    if (similarHost && window.RyanaData) {
-      var list = window.RyanaData.products
+    if (similarHost && window.RasaGridData) {
+      var list = window.RasaGridData.products
         .filter(function (p) {
           return p.id !== product.id;
         })
@@ -508,7 +508,7 @@
         });
 
       if (list.length < 4) {
-        var extra = window.RyanaData.products.filter(function (p) {
+        var extra = window.RasaGridData.products.filter(function (p) {
           return p.id !== product.id && p.category !== product.category;
         });
         list = list.concat(extra);
@@ -522,7 +522,7 @@
   }
 
   function mountCart() {
-    if (!window.RyanaCart || !window.RyanaData) return;
+    if (!window.RasaGridCart || !window.RasaGridData) return;
 
     var host = $("[data-cart-items]");
     var totalHost = $("[data-cart-total]");
@@ -530,7 +530,7 @@
 
     function render() {
       host.innerHTML = "";
-      var items = window.RyanaCart.getCart();
+      var items = window.RasaGridCart.getCart();
       var total = 0;
 
       if (!items.length) {
@@ -543,7 +543,7 @@
       }
 
       items.forEach(function (line) {
-        var p = window.RyanaData.findProduct(line.id);
+        var p = window.RasaGridData.findProduct(line.id);
         if (!p) return;
 
         total += p.price * line.qty;
@@ -576,14 +576,14 @@
 
         var qtyInput = $(".cart-row__qty", row);
         qtyInput.addEventListener("change", function () {
-          window.RyanaCart.updateQty(line.id, Number(qtyInput.value || 1));
+          window.RasaGridCart.updateQty(line.id, Number(qtyInput.value || 1));
           updateHeaderCounts();
           render();
         });
 
         var removeBtn = $("[data-remove]", row);
         removeBtn.addEventListener("click", function () {
-          window.RyanaCart.removeFromCart(line.id);
+          window.RasaGridCart.removeFromCart(line.id);
           updateHeaderCounts();
           render();
         });
@@ -603,14 +603,14 @@
   }
 
   function mountWishlist() {
-    if (!window.RyanaCart || !window.RyanaData) return;
+    if (!window.RasaGridCart || !window.RasaGridData) return;
 
     var host = $("[data-wishlist-items]");
     if (!host) return;
 
     function render() {
       host.innerHTML = "";
-      var ids = window.RyanaCart.getWishlist();
+      var ids = window.RasaGridCart.getWishlist();
       if (!ids.length) {
         var empty = document.createElement("div");
         empty.className = "card card--padded";
@@ -620,7 +620,7 @@
       }
 
       ids.forEach(function (id) {
-        var p = window.RyanaData.findProduct(id);
+        var p = window.RasaGridData.findProduct(id);
         if (!p) return;
         host.appendChild(
           buildProductCard(p, {
@@ -642,7 +642,7 @@
   }
 
   function mountLogin() {
-    if (!window.RyanaAuth) return;
+    if (!window.RasaGridAuth) return;
     var hint = $("[data-login-hint]");
     if (hint) {
       hint.textContent = "Demo login: use any email and any password.";
@@ -656,7 +656,7 @@
       var email = $("[name=email]", form).value;
       var password = $("[name=password]", form).value;
 
-      var ok = window.RyanaAuth.login(email, password);
+      var ok = window.RasaGridAuth.login(email, password);
       var error = $("[data-login-error]");
       if (!ok) {
         if (error) error.textContent = "Please enter an email and password.";
@@ -674,8 +674,8 @@
   }
 
   function mountAccount() {
-    if (!window.RyanaAuth) return;
-    window.RyanaAuth.requireAuth("account.html");
+    if (!window.RasaGridAuth) return;
+    window.RasaGridAuth.requireAuth("account.html");
 
     renderBreadcrumbs([
       { label: "Home", href: "index.html" },
@@ -685,7 +685,7 @@
     var logoutBtn = $("[data-logout]");
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
-        window.RyanaAuth.logout();
+        window.RasaGridAuth.logout();
         window.location.href = resolvePath("pages/login.html");
       });
     }
@@ -725,9 +725,9 @@
 
   function mountShowcase(pageName) {
     // Lightweight pages: Offers / New Arrivals.
-    if (!window.RyanaData) return;
+    if (!window.RasaGridData) return;
 
-    var list = window.RyanaData.products.slice();
+    var list = window.RasaGridData.products.slice();
     if (pageName === "offers") {
       list = list.slice(0, 6);
       renderBreadcrumbs([
@@ -753,7 +753,7 @@
   }
 
   function mountBlogList() {
-    if (!window.RyanaData) return;
+    if (!window.RasaGridData) return;
 
     renderBreadcrumbs([
       { label: "Home", href: "index.html" },
@@ -764,7 +764,7 @@
     if (!host) return;
 
     host.innerHTML = "";
-    window.RyanaData.blogs.forEach(function (post) {
+    window.RasaGridData.blogs.forEach(function (post) {
       var card = document.createElement("article");
       card.className = "card card--padded";
       card.innerHTML =
@@ -785,10 +785,10 @@
   }
 
   function mountBlogDetail() {
-    if (!window.RyanaData) return;
+    if (!window.RasaGridData) return;
 
     var id = getQueryParam("id");
-    var post = window.RyanaData.findBlog(id);
+    var post = window.RasaGridData.findBlog(id);
 
     var title = $("[data-blog-title]");
     var date = $("[data-blog-date]");
@@ -799,7 +799,7 @@
       return;
     }
 
-    document.title = post.title + " | Ryana Blog";
+    document.title = post.title + " | RasaGrid Blog";
     if (title) title.textContent = post.title;
     if (date) date.textContent = post.date;
     if (content) content.textContent = post.content;
@@ -812,7 +812,7 @@
   }
 
   function mountCheckout() {
-    if (!window.RyanaCart || !window.RyanaData) return;
+    if (!window.RasaGridCart || !window.RasaGridData) return;
 
     renderBreadcrumbs([
       { label: "Home", href: "index.html" },
@@ -824,7 +824,7 @@
     var totalHost = $("[data-checkout-total]");
     if (!host) return;
 
-    var items = window.RyanaCart.getCart();
+    var items = window.RasaGridCart.getCart();
     var total = 0;
     host.innerHTML = "";
 
@@ -838,7 +838,7 @@
     }
 
     items.forEach(function (line) {
-      var p = window.RyanaData.findProduct(line.id);
+      var p = window.RasaGridData.findProduct(line.id);
       if (!p) return;
       var lineTotal = p.price * line.qty;
       total += lineTotal;
@@ -868,7 +868,7 @@
     if (form) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        window.RyanaCart.clearCart();
+        window.RasaGridCart.clearCart();
         updateHeaderCounts();
         window.location.href = resolvePath("pages/products.html");
       });
@@ -876,7 +876,7 @@
   }
 
   function init() {
-    window.RyanaUI = {
+    window.RasaGridUI = {
       basePath: basePath,
       resolvePath: resolvePath
     };
@@ -886,7 +886,7 @@
     setActiveNav();
     updateHeaderCounts();
 
-    document.addEventListener("ryana:statechange", updateHeaderCounts);
+    document.addEventListener("RasaGrid:statechange", updateHeaderCounts);
 
     var page = getPageName();
     if (page === "home") initHome();

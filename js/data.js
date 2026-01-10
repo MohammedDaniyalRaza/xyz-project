@@ -146,7 +146,7 @@
     return null;
   }
 
-  window.RyanaData = {
+  window.RasaGridData = {
     products: products,
     blogs: blogs,
     findProduct: findProduct,

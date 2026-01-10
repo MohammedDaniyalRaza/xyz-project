@@ -1,8 +1,8 @@
 (function () {
   "use strict";
 
-  var CART_KEY = "ryana_cart";
-  var WISHLIST_KEY = "ryana_wishlist";
+  var CART_KEY = "RasaGrid_cart";
+  var WISHLIST_KEY = "RasaGrid_wishlist";
 
   function safeParse(json, fallback) {
     try {
@@ -95,10 +95,10 @@
   }
 
   function notify() {
-    document.dispatchEvent(new CustomEvent("ryana:statechange"));
+    document.dispatchEvent(new CustomEvent("RasaGrid:statechange"));
   }
 
-  window.RyanaCart = {
+  window.RasaGridCart = {
     getCart: getCart,
     setCart: setCart,
     cartCount: cartCount,

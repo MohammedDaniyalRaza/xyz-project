@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "ryana_theme";
+  var STORAGE_KEY = "RasaGrid_theme";
 
   function getSavedTheme() {
     try {
@@ -45,7 +45,7 @@
     });
   }
 
-  window.RyanaTheme = {
+  window.RasaGridTheme = {
     applyTheme: applyTheme,
     toggleTheme: toggleTheme
   };

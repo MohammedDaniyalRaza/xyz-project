@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  var CREDS_KEY = "ryana_creds";
-  var AUTH_KEY = "ryana_auth";
-  var USER_KEY = "ryana_user";
+  var CREDS_KEY = "RasaGrid_creds";
+  var AUTH_KEY = "RasaGrid_auth";
+  var USER_KEY = "RasaGrid_user";
 
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -22,7 +22,7 @@
     // Random credentials for demo.
     var code = randomInt(1000, 9999);
     var creds = {
-      email: "user" + code + "@ryana.com",
+      email: "user" + code + "@RasaGrid.com",
       password: "RC-" + code
     };
 
@@ -69,12 +69,12 @@
   function requireAuth(redirectTo) {
     if (isLoggedIn()) return;
 
-    var base = window.RyanaUI && window.RyanaUI.basePath ? window.RyanaUI.basePath() : "";
+    var base = window.RasaGridUI && window.RasaGridUI.basePath ? window.RasaGridUI.basePath() : "";
     var target = redirectTo || (window.location.pathname.split("/").pop() || "account.html");
     window.location.href = base + "pages/login.html?redirect=" + encodeURIComponent(target);
   }
 
-  window.RyanaAuth = {
+  window.RasaGridAuth = {
     getCreds: getCreds,
     isLoggedIn: isLoggedIn,
     login: login,
